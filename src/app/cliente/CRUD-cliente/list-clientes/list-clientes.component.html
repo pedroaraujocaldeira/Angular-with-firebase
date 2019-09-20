@@ -1,0 +1,42 @@
+<mat-card >
+
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td style="cursor: pointer;" (click)="onEdit(emp)" mat-cell *matCellDef="let emp"> {{emp.empCode}} - {{emp.fullName}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Position">
+      <th mat-header-cell *matHeaderCellDef> Position </th>
+      <td style="cursor: pointer;" (click)="onEdit(emp)" mat-cell *matCellDef="let emp"> {{emp.position}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Mobile">
+      <th mat-header-cell *matHeaderCellDef> Mobile </th>
+      <td style="cursor: pointer;" (click)="onEdit(emp)" mat-cell *matCellDef="let emp"> {{emp.mobile}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td style="cursor: pointer;" mat-cell *matCellDef="let emp"><a class="btn text-danger" (click)="onDelete(emp.id)">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+        </a></td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+</mat-card>
