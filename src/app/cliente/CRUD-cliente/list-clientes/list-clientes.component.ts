@@ -16,23 +16,22 @@ export class ListClientesComponent implements OnInit {
   displayedColumns: string[] = ['Name', 'Position', 'Mobile', 'Delete'];
 
   dataSource;
- 
-  constructor(private service: ClienteService,
-     private firestore: AngularFirestore,
+
+  constructor(private service: ClienteService, private firestore: AngularFirestore,
     // private toastr:ToastrService
-    
-    ) { }
+
+  ) { }
 
   ngOnInit() {
     this.service.getClientes().subscribe(actionArray => {
       console.log(actionArray);
 
-      let list = actionArray.map(item => {
+      const list = actionArray.map(item => {
         return {
           id: item.payload.doc.id,
           ...item.payload.doc.data()
         } as Cliente;
-      })
+      });
 
       this.dataSource = new MatTableDataSource(list);
 
@@ -43,14 +42,14 @@ export class ListClientesComponent implements OnInit {
     this.service.formData = Object.assign({}, emp);
   }
 
-  
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
   }
 
   onDelete(id: string) {
-    if (confirm("Are you sure to delete this record?")) {
+    if (confirm('Are you sure to delete this record?')) {
       this.firestore.doc('clientes/' + id).delete();
       // this.toastr.warning('Deleted successfully','EMP. Register');
     }

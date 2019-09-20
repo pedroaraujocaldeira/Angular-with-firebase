@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ClienteComponent } from './cliente/cliente.component';
+import { LoginComponent } from './cliente/security/login/login.component';
 
 const routes: Routes = [
 
@@ -14,13 +15,18 @@ const routes: Routes = [
     component: ClienteComponent,
 
   },
+  {
+    path: 'login',
+    component: LoginComponent,
+
+  }
   //   {
   //     path: 'usuarios',
   //     component: MainLayoutComponent,
   //     canActivate: [AuthGuard],
   //     children: [
   //       { path: '', component: UsuarioComponent, canActivate: [RoleGuard]},
-  //       { path: 'form', component: UsuarioformComponent, canActivate: [RoleGuard]}        
+  //       { path: 'form', component: UsuarioformComponent, canActivate: [RoleGuard]}
   //     ]
   //   },
   // { path: 'aplicativos',
