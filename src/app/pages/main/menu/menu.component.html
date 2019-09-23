@@ -5,13 +5,9 @@
       [opened]="!(isHandset$ | async)">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#" routerLink="clientes" >Clientes</a>
-      <a mat-list-item href="#">Funcionarios</a>
-      <a mat-list-item href="#">Pedidos</a>
-      <a mat-list-item href="#">Produtos</a>
-      <a mat-list-item href="#" routerLink="login" >Login</a>
-
-     
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -24,10 +20,8 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Empresa</span>
+      <span>angular-firebase</span>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from 'src/app/shared/cliente.model';
+import { Cliente } from 'src/app/model/cliente.model';
 import { ClienteService } from 'src/app/shared/cliente.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatTableDataSource } from '@angular/material';

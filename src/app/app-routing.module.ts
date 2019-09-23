@@ -1,24 +1,50 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ClienteComponent } from './cliente/cliente.component';
-import { LoginComponent } from './cliente/security/login/login.component';
+import { ClienteComponent } from './pages/cliente/cliente.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AcessoNegadoComponent } from './pages/acesso-negado/acesso-negado.component';
+import { AuthGuard } from './guards/auth.guard';
+import { ProdutoComponent } from './pages/produtos/produto.component';
+import { PedidoComponent } from './pages/pedidos/pedido.component';
+import { FuncionarioComponent } from './pages/funcionarios/funcionario.component';
 
 const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'main',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
     path: 'clientes',
+    canActivate: [AuthGuard],
     component: ClienteComponent,
+
+  },
+  {
+    path: 'pedidos',
+    canActivate: [AuthGuard],
+    component: PedidoComponent,
+
+  },
+  {
+    path: 'produtos',
+    canActivate: [AuthGuard],
+    component: ProdutoComponent,
+
+  },
+  {
+    path: 'funcionarios',
+    canActivate: [AuthGuard],
+    component: FuncionarioComponent,
 
   },
   {
     path: 'login',
     component: LoginComponent,
-
+    children: [
+      { path: '', component: LoginComponent }
+    ]
   }
   //   {
   //     path: 'usuarios',

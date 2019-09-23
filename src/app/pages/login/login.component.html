@@ -1,0 +1,58 @@
+
+<div class="main-div" style="margin: 10px">
+    <mat-card class="example-card">
+        <div style="background: white">
+            <img src="/assets/img/logo.png">
+        </div>
+        <div style="width: 100%; margin-top: 20px">
+            <mat-card-content>
+                <form class="example-form" [formGroup]="loginForm" >
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <input  formControlName="username" matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Password" [(ngModel)]="password"  formControlName="password" type="password" name="password" required>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                              <div *ngIf="submitted && this.loginForm.controls['username'].invalid" class="invalid-feedback text-center">
+                                <div *ngIf="this.loginForm.controls['username'].errors.required" style="color:red">O campo E-Mail é obrigatório</div>
+                                <div *ngIf="this.loginForm.controls['username'].errors.username" style="color:red">O campo E-Mail precisa ser um e-mail
+                                    válido</div>
+                            </div>
+                            <div *ngIf="submitted && this.loginForm.controls['password'].invalid" class="invalid-feedback text-center">
+                                <div *ngIf="this.loginForm.controls['password'].errors.required" style="color:red">O campo Senha é obrigatório</div>
+                            </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div *ngIf="isLogin && isFailure" class="text-center alert alert-block alert-danger fade in">
+                      <strong>Falha no login! </strong>{{alertFailMsg}}
+                  </div>
+  
+                  <div *ngIf="isLogin && isSuccess" class="text-center alert alert-block alert-success fade in">
+                      <strong>Sucesso! </strong>{{alertSuccessMsg}}
+                  </div>
+                </form>
+                <!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
+            </mat-card-content>
+        </div>
+
+        <div class="main-div">
+            <mat-card-actions>
+                <button mat-raised-button (click)="login(username, password)" type="submit" color="primary">Entrar</button>
+            </mat-card-actions>
+        </div>
+        <a href="#" class="txt1">
+            Esqueceu Senha
+        </a>
+    </mat-card>
+</div>
